@@ -1,12 +1,28 @@
 # Fullstack Wordle Game
 
+A fullstack word game inspired by wordle.
 
-## Frontend
-/client will contain all the frontend code
+---
 
-## Backend
-/server will contain all the backend code
+### Frontend
 
-Uses cors and express
+All frontend-related code is inside the `/client` folder.
 
-/tests will contain all the tests
+**Tech stack:**
+- React
+- Vite
+
+
+### Backend
+
+All backend-related code is inside the `/server` folder.
+
+**Tech stack:**
+- Express
+- Cors
+
+---
+
+## Tests
+
+The `/tests` folder will contain all automated tests for this project.
