@@ -53,3 +53,11 @@ main {
   font-size: 1.5rem;
   text-transform: uppercase;
 }
+
+.confirm-length-btn {
+  background-color: green;
+}
+
+#word-length {
+  background-color: grey;
+}

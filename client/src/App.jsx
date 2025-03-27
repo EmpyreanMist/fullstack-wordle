@@ -4,13 +4,18 @@ import Header from './header.jsx';
 import BackgroundMusic from './BackgroundMusic.jsx';
 import GameBoard from './GameBoard.jsx';
 import StartScreen from './StartScreen.jsx';
+import WordLengthSelector from './WordLengthSelector.jsx';
 
 function App() {
   const [gameStarted, setGameStarted] = useState(false);
-  const wordLength = 5;
+  const [wordLength, setWordLength] = useState(null);
 
   const startGame = () => {
     setGameStarted(true);
+  };
+
+  const handleWordLengthConfirm = (selectedLength) => {
+    setWordLength(selectedLength);
   };
 
   return (
@@ -19,10 +24,13 @@ function App() {
       <Header />
       <main>
         {!gameStarted ? (
-          // Visa StartScreen om spelet ej startat
+          // Visa StartScreen först
           <StartScreen startGame={startGame} />
+        ) : wordLength === null ? (
+          // Visa val av ordlängd
+          <WordLengthSelector onConfirm={handleWordLengthConfirm} />
         ) : (
-          // Visa GameBoard när spelet är startat
+          // Visa spelbrädet med vald ordlängd
           <GameBoard wordLength={wordLength} />
         )}
       </main>
