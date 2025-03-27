@@ -1,7 +1,7 @@
 function Header() {
   return (
     <header className="header">
-      <h1>Wordle</h1>
+      <h1 className="title">Wordle</h1>
     </header>
   );
 }
