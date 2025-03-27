@@ -5,6 +5,7 @@ import BackgroundMusic from './BackgroundMusic.jsx';
 import GameBoard from './GameBoard.jsx';
 import StartScreen from './StartScreen.jsx';
 import WordLengthSelector from './WordLengthSelector.jsx';
+import Settings from './Settings';
 
 function App() {
   const [gameStarted, setGameStarted] = useState(false);
@@ -34,6 +35,7 @@ function App() {
           <GameBoard wordLength={wordLength} />
         )}
       </main>
+      <Settings />
     </div>
   );
 }
