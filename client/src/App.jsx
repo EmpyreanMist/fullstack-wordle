@@ -1,11 +1,12 @@
-import { useState } from 'react';
-import './styles/App.css';
-import Header from './components/header.jsx';
-import BackgroundMusic from './BackgroundMusic.jsx';
-import GameBoard from './components/GameBoard.jsx';
-import StartScreen from './components/StartScreen.jsx';
-import WordLengthSelector from './components/WordLengthSelector.jsx';
-import Settings from './Settings';
+import { useState } from "react";
+import "./styles/App.css";
+import Header from "./components/header.jsx";
+import BackgroundMusic from "./BackgroundMusic.jsx";
+import GameBoard from "./components/GameBoard.jsx";
+import StartScreen from "./components/StartScreen.jsx";
+import WordLengthSelector from "./components/WordLengthSelector.jsx";
+import Settings from "./components/Settings.jsx";
+import Keyboard from "./components/Keyboard.jsx";
 
 function App() {
   const [gameStarted, setGameStarted] = useState(false);
@@ -32,9 +33,16 @@ function App() {
           <WordLengthSelector onConfirm={handleWordLengthConfirm} />
         ) : (
           // Visa spelbrädet med vald ordlängd
-          <GameBoard wordLength={wordLength} />
+          <>
+            <GameBoard wordLength={wordLength} />
+          </>
         )}
       </main>
+      {gameStarted && wordLength !== null && (
+        <div className="keyboard-wrapper">
+          <Keyboard />
+        </div>
+      )}
       <Settings />
     </div>
   );
