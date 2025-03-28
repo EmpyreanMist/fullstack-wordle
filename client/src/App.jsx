@@ -1,10 +1,10 @@
 import { useState } from 'react';
-import './App.css';
-import Header from './header.jsx';
+import './styles/App.css';
+import Header from './components/header.jsx';
 import BackgroundMusic from './BackgroundMusic.jsx';
-import GameBoard from './GameBoard.jsx';
-import StartScreen from './StartScreen.jsx';
-import WordLengthSelector from './WordLengthSelector.jsx';
+import GameBoard from './components/GameBoard.jsx';
+import StartScreen from './components/StartScreen.jsx';
+import WordLengthSelector from './components/WordLengthSelector.jsx';
 import Settings from './Settings';
 
 function App() {
