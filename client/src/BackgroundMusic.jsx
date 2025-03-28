@@ -21,7 +21,13 @@ function BackgroundMusic() {
     };
   }, []);
 
-  return <audio ref={audioRef} src="/mp3/main-theme.mp3" loop />;
+  return (
+    <audio
+      ref={audioRef}
+      src={`${import.meta.env.BASE_URL}mp3/main-theme.mp3`}
+      loop
+    />
+  );
 }
 
 export default BackgroundMusic;
