@@ -18,9 +18,15 @@
   padding: 1rem;
   font-size: 1.2rem;
   width: 10vw;
-  max-width: 50px;
+  max-width: 55px;
   min-width: 30px;
   aspect-ratio: 1 / 1;
   text-align: center;
   cursor: pointer;
+}
+
+.enter-key,
+.backspace-key {
+  max-width: 120px;
+  height: 55px;
 }
