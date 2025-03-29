@@ -1,7 +1,7 @@
 function Keyboard() {
   const rowOne = ["Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P"];
   const rowTwo = ["A", "S", "D", "F", "G", "H", "J", "K", "L"];
-  const rowThree = ["Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P"];
+  const rowThree = ["Z", "X", "C", "V", "B", "N", "M"];
   return (
     <div className="keyboard">
       <div className="rowOne">
@@ -22,7 +22,7 @@ function Keyboard() {
           );
         })}
       </div>
-      <div className="rowTwo">
+      <div className="rowThree">
         {rowThree.map((letter) => {
           return (
             <button className="key" key={letter}>
