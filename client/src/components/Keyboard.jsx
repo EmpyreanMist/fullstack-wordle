@@ -26,7 +26,7 @@ function Keyboard() {
           if (letter === "ENTER") {
             return (
               <button className="key enter-key" key={letter}>
-                ENTER
+                ↵
               </button>
             );
           }

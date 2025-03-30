@@ -11,6 +11,13 @@
   margin-top: auto;
 }
 
+.rowOne,
+.rowTwo,
+.rowThree {
+  display: flex;
+  justify-content: center;
+}
+
 .key {
   background-color: #3a3737;
   border-radius: 5px;
@@ -23,10 +30,14 @@
   aspect-ratio: 1 / 1;
   text-align: center;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .enter-key,
 .backspace-key {
   max-width: 120px;
   height: 55px;
+  font-size: 2rem;
 }
