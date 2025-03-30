@@ -1,15 +1,54 @@
+import { useState, useEffect } from "react";
+
 function GameBoard({ wordLength }) {
   const rows = 6;
 
+  const [guesses, setGuesses] = useState([]);
+  const [currentGuess, setCurrentGuess] = useState("");
+  const [secretWord, setSecretWord] = useState("snusa");
+
+  useEffect(() => {
+    const handleKeyDown = (event) => {
+      const key = event.key;
+
+      if (key === "Backspace") {
+        setCurrentGuess((prev) => prev.slice(0, -1));
+      } else if (key === "Enter") {
+        if (currentGuess.length !== wordLength) return;
+
+        setGuesses((prev) => [...prev, currentGuess]);
+        setCurrentGuess("");
+      } else if (/^[a-zA-ZåäöÅÄÖ]$/.test(key)) {
+        if (currentGuess.length < wordLength) {
+          setCurrentGuess((prev) => prev + key.toLowerCase());
+        }
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [currentGuess, wordLength]);
+
   return (
     <div className="game-board">
-      {Array.from({ length: rows }).map((_, rowIndex) => (
-        <div key={rowIndex} className="row">
-          {Array.from({ length: wordLength }).map((_, colIndex) => (
-            <div key={colIndex} className="cell"></div>
-          ))}
-        </div>
-      ))}
+      {Array.from({ length: rows }).map((_, rowIndex) => {
+        const guess =
+          guesses[rowIndex] ||
+          (rowIndex === guesses.length ? currentGuess : "");
+
+        return (
+          <div key={rowIndex} className="row">
+            {Array.from({ length: wordLength }).map((_, colIndex) => {
+              const letter = guess[colIndex] || "";
+              return (
+                <div key={colIndex} className="cell">
+                  {letter}
+                </div>
+              );
+            })}
+          </div>
+        );
+      })}
     </div>
   );
 }
