@@ -1,12 +1,11 @@
 import { useState } from "react";
 import "./styles/App.css";
 import Header from "./components/header.jsx";
-import BackgroundMusic from "./BackgroundMusic.jsx";
 import GameBoard from "./components/GameBoard.jsx";
 import StartScreen from "./components/StartScreen.jsx";
 import WordLengthSelector from "./components/WordLengthSelector.jsx";
-import Settings from "./components/Settings.jsx";
 import Keyboard from "./components/Keyboard.jsx";
+import MusicController from "./components/MusicController.jsx";
 
 function App() {
   const [gameStarted, setGameStarted] = useState(false);
@@ -22,20 +21,14 @@ function App() {
 
   return (
     <div className="app">
-      <BackgroundMusic />
       <Header />
       <main>
         {!gameStarted ? (
-          // Visa StartScreen först
           <StartScreen startGame={startGame} />
         ) : wordLength === null ? (
-          // Visa val av ordlängd
           <WordLengthSelector onConfirm={handleWordLengthConfirm} />
         ) : (
-          // Visa spelbrädet med vald ordlängd
-          <>
-            <GameBoard wordLength={wordLength} />
-          </>
+          <GameBoard wordLength={wordLength} />
         )}
       </main>
       {gameStarted && wordLength !== null && (
@@ -43,7 +36,7 @@ function App() {
           <Keyboard />
         </div>
       )}
-      <Settings />
+      <MusicController />
     </div>
   );
 }
