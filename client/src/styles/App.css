@@ -134,3 +134,19 @@ main {
   gap: 1rem;
   margin-top: 2rem;
 }
+
+.cell {
+  transition: background-color 0.2s ease;
+}
+
+.cell.correct {
+  background-color: green;
+}
+
+.cell.present {
+  background-color: yellow;
+}
+
+.cell.absent {
+  background-color: grey;
+}

@@ -1,9 +1,11 @@
 import { useState, useEffect } from "react";
+import { getFeedback } from "../utils/getFeedback";
 
 function GameBoard({ wordLength }) {
   const rows = 6;
 
   const [guesses, setGuesses] = useState([]);
+  const [feedbackList, setFeedbackList] = useState([]);
   const [currentGuess, setCurrentGuess] = useState("");
   const [secretWord, setSecretWord] = useState("snusa");
 
@@ -16,9 +18,12 @@ function GameBoard({ wordLength }) {
       } else if (key === "Enter") {
         if (currentGuess.length !== wordLength) return;
 
+        const feedback = getFeedback(currentGuess, secretWord);
+        setFeedbackList((prev) => [...prev, feedback]);
+
         setGuesses((prev) => [...prev, currentGuess]);
         setCurrentGuess("");
-      } else if (/^[a-zA-ZåäöÅÄÖ]$/.test(key)) {
+      } else if (/^[a-zA-Z]$/.test(key)) {
         if (currentGuess.length < wordLength) {
           setCurrentGuess((prev) => prev + key.toLowerCase());
         }
@@ -36,12 +41,17 @@ function GameBoard({ wordLength }) {
           guesses[rowIndex] ||
           (rowIndex === guesses.length ? currentGuess : "");
 
+        const feedback = feedbackList[rowIndex];
+
         return (
           <div key={rowIndex} className="row">
             {Array.from({ length: wordLength }).map((_, colIndex) => {
               const letter = guess[colIndex] || "";
               return (
-                <div key={colIndex} className="cell">
+                <div
+                  key={colIndex}
+                  className={`cell ${feedback?.[colIndex] || ""}`}
+                >
                   {letter}
                 </div>
               );
