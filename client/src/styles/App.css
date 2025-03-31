@@ -60,28 +60,6 @@ main {
   animation: pulse 2s infinite;
 }
 
-.game-board {
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-}
-
-.row {
-  display: flex;
-  gap: 5px;
-}
-
-.cell {
-  width: 50px;
-  height: 50px;
-  border: 2px solid #ccc;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 1.5rem;
-  text-transform: uppercase;
-}
-
 .confirm-length-btn {
   background-color: #28a745;
   color: white;
@@ -133,20 +111,4 @@ main {
   align-items: center;
   gap: 1rem;
   margin-top: 2rem;
-}
-
-.cell {
-  transition: background-color 0.3s ease;
-}
-
-.cell.correct {
-  background-color: green;
-}
-
-.cell.present {
-  background-color: rgb(219, 219, 113);
-}
-
-.cell.absent {
-  background-color: grey;
 }
