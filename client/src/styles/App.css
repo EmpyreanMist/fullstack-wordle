@@ -136,7 +136,7 @@ main {
 }
 
 .cell {
-  transition: background-color 0.2s ease;
+  transition: background-color 0.3s ease;
 }
 
 .cell.correct {
@@ -144,7 +144,7 @@ main {
 }
 
 .cell.present {
-  background-color: yellow;
+  background-color: rgb(219, 219, 113);
 }
 
 .cell.absent {
