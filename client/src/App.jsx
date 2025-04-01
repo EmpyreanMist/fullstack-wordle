@@ -4,6 +4,7 @@ import Header from "./components/header";
 import MusicController from "./components/MusicController";
 import GamePage from "./components/GamePage";
 import InfoPage from "./components/InfoPage";
+import Footer from "./components/Footer";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         </Routes>
       </main>
       <MusicController />
+      <Footer />
     </div>
   );
 }

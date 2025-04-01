@@ -1,0 +1,13 @@
+footer {
+  margin-top: 4rem;
+  padding: 1rem 0;
+  text-align: center;
+}
+
+footer a {
+  margin: 0 1rem;
+  font-size: 1.5rem;
+  color: #333;
+  transition: color 0.2s ease;
+  text-decoration: none;
+}

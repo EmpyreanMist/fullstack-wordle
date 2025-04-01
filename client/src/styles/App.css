@@ -8,8 +8,19 @@ body {
 
 #root,
 .app {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.app {
+  display: flex;
+  flex-direction: column;
   min-height: 100vh;
-  position: relative;
+}
+
+main {
+  flex: 1;
 }
 
 * {
