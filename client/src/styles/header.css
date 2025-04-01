@@ -1,0 +1,13 @@
+.header-nav ul {
+  display: flex;
+  justify-content: space-evenly;
+  font-size: large;
+}
+
+.header-nav li {
+  list-style: none;
+}
+
+.header-nav li :hover {
+  color: #28a745;
+}
