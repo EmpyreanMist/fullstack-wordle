@@ -3,6 +3,7 @@ import "./styles/App.css";
 import Header from "./components/header";
 import MusicController from "./components/MusicController";
 import GamePage from "./components/GamePage";
+import InfoPage from "./components/InfoPage";
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
       <main>
         <Routes>
           <Route path="/" element={<GamePage />} />
+          <Route path="/info" element={<InfoPage />} />
         </Routes>
       </main>
       <MusicController />
