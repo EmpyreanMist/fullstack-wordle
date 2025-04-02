@@ -71,7 +71,8 @@ main {
   animation: pulse 2s infinite;
 }
 
-.confirm-length-btn {
+.confirm-length-btn,
+.play-again-btn {
   background-color: #28a745;
   color: white;
   border: none;
@@ -84,11 +85,13 @@ main {
   animation: pulse 2s infinite;
 }
 
-.confirm-length-btn:hover {
+.confirm-length-btn:hover,
+.play-again-btn:hover {
   background-color: #218838;
 }
 
-.confirm-length-btn:active {
+.confirm-length-btn:active,
+.play-again-btn:active {
   transform: translateY(2px);
   box-shadow: 0 2px #1c7c31;
 }

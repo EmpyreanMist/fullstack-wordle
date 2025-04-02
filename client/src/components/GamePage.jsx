@@ -14,7 +14,9 @@ function GamePage() {
   const [feedbackList, setFeedbackList] = useState([]);
   const [currentGuess, setCurrentGuess] = useState("");
 
-  // Hämta ord från backend när wordLength sätts
+  const [gameOver, setGameOver] = useState(false);
+  const [didWin, setDidWin] = useState(false);
+
   useEffect(() => {
     if (!wordLength) return;
 
@@ -22,8 +24,8 @@ function GamePage() {
       try {
         const res = await fetch(`/api/word?length=${wordLength}`);
         const data = await res.json();
+        console.log(data.word);
         setSecretWord(data.word);
-        console.log("Secret:", data.word); // Debug
       } catch (err) {
         console.error("Could not fetch word:", err.message);
       }
@@ -32,17 +34,28 @@ function GamePage() {
     fetchWord();
   }, [wordLength]);
 
-  // Gemensam logik för tangentinput (fysiskt och klick)
   const handleKeyPress = (key) => {
+    if (gameOver) return;
+
     if (key === "Backspace") {
       setCurrentGuess((prev) => prev.slice(0, -1));
     } else if (key === "Enter") {
       if (currentGuess.length !== wordLength) return;
 
       const feedback = getFeedback(currentGuess, secretWord);
-      setGuesses((prev) => [...prev, currentGuess]);
-      setFeedbackList((prev) => [...prev, feedback]);
+      const newGuesses = [...guesses, currentGuess];
+      const newFeedbackList = [...feedbackList, feedback];
+
+      setGuesses(newGuesses);
+      setFeedbackList(newFeedbackList);
       setCurrentGuess("");
+
+      if (currentGuess === secretWord) {
+        setDidWin(true);
+        setGameOver(true);
+      } else if (newGuesses.length >= 6) {
+        setGameOver(true);
+      }
     } else if (/^[a-zA-Z]$/.test(key)) {
       if (currentGuess.length < wordLength) {
         setCurrentGuess((prev) => prev + key.toLowerCase());
@@ -50,14 +63,22 @@ function GamePage() {
     }
   };
 
-  // Tangentbordshantering (fysiskt)
   useEffect(() => {
     const listener = (e) => handleKeyPress(e.key);
     window.addEventListener("keydown", listener);
     return () => window.removeEventListener("keydown", listener);
-  }, [currentGuess, wordLength, secretWord]);
+  }, [currentGuess, wordLength, secretWord, guesses, feedbackList, gameOver]);
 
-  // Steg-för-steg visning
+  const resetGame = () => {
+    setGuesses([]);
+    setFeedbackList([]);
+    setCurrentGuess("");
+    setSecretWord(null);
+    setGameOver(false);
+    setDidWin(false);
+    setWordLength(null);
+  };
+
   if (!gameStarted) {
     return <StartScreen startGame={() => setGameStarted(true)} />;
   }
@@ -83,9 +104,30 @@ function GamePage() {
         currentGuess={currentGuess}
         feedbackList={feedbackList}
       />
-      <div className="keyboard-wrapper">
-        <Keyboard onKeyPress={handleKeyPress} />
-      </div>
+      {!gameOver && (
+        <div className="keyboard-wrapper">
+          <Keyboard onKeyPress={handleKeyPress} />
+        </div>
+      )}
+      {gameOver && (
+        <div className="result">
+          <h2>{didWin ? "🎉 You won!" : "💀 Game Over"}</h2>
+          <p>
+            Word length: <strong>{wordLength}</strong>
+          </p>
+          <p>
+            Attempts used: <strong>{guesses.length}</strong>
+          </p>
+          {!didWin && (
+            <p>
+              The correct word was: <strong>{secretWord}</strong>
+            </p>
+          )}
+          <button className="play-again-btn" onClick={resetGame}>
+            Play again
+          </button>
+        </div>
+      )}
     </>
   );
 }
