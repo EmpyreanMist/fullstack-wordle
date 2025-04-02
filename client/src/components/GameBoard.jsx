@@ -7,7 +7,35 @@ function GameBoard({ wordLength }) {
   const [guesses, setGuesses] = useState([]);
   const [feedbackList, setFeedbackList] = useState([]);
   const [currentGuess, setCurrentGuess] = useState("");
-  const [secretWord, setSecretWord] = useState("snusa");
+  const [secretWord, setSecretWord] = useState(null);
+
+  useEffect(() => {
+    if (!wordLength) return;
+
+    const fetchWord = async () => {
+      const url = `/api/word?length=${wordLength}`;
+
+      try {
+        const response = await fetch(url);
+
+        if (!response.ok) {
+          throw new Error(`Response status: ${response.status}`);
+        }
+
+        const data = await response.json();
+        setSecretWord(data.word);
+        /* TEMPORARY, WILL DELETE LATER !! */
+        console.log(data.word);
+      } catch (error) {
+        console.error(
+          "Something went wrong fetching the word: ",
+          error.message
+        );
+      }
+    };
+
+    fetchWord();
+  }, [wordLength]);
 
   useEffect(() => {
     const handleKeyDown = (event) => {
