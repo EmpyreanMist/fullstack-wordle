@@ -1,5 +1,5 @@
-import { Link } from "react-router-dom";
-import "../styles/header.css";
+import { Link } from 'react-router-dom';
+import '../styles/header.css';
 
 function Header() {
   return (
@@ -13,7 +13,7 @@ function Header() {
             <Link to="/">Play Wordle</Link>
           </li>
           <li>
-            <Link to="">Scoreboard</Link>
+            <a href="http://localhost:5080/scoreboard">Scoreboard</a>
           </li>
         </ul>
       </nav>
