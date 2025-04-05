@@ -1,6 +1,5 @@
 import path from 'path';
 import { fileURLToPath } from 'url';
-
 import express from 'express';
 import cors from 'cors';
 
@@ -18,6 +17,8 @@ const __dirname = path.dirname(__filename);
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 
+app.use(express.static(path.join(__dirname, 'public')));
+
 app.use(cors());
 app.use(express.json());
 
@@ -25,10 +26,6 @@ app.use('/api/game', gameRoute);
 app.use('/api/highscore', highScoreRoute);
 app.use('/api/info', infoRoute);
 app.use('/api/word', wordRoute);
-
-app.get('/', (req, res) => {
-  res.send('Tjenare');
-});
 
 app.get('/scoreboard', (req, res) => {
   const dummyScores = [
