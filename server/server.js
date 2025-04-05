@@ -32,6 +32,15 @@ app.get('/scoreboard', (req, res) => {
     { name: 'Alice', guesses: 3, wordLength: 5, timeInSeconds: 12 },
     { name: 'Bob', guesses: 4, wordLength: 6, timeInSeconds: 18 },
     { name: 'Eve', guesses: 2, wordLength: 5, timeInSeconds: 10 },
+    { name: 'Alice', guesses: 3, wordLength: 5, timeInSeconds: 12 },
+    { name: 'Bob', guesses: 4, wordLength: 6, timeInSeconds: 18 },
+    { name: 'Eve', guesses: 2, wordLength: 5, timeInSeconds: 10 },
+    { name: 'Alice', guesses: 3, wordLength: 5, timeInSeconds: 12 },
+    { name: 'Bob', guesses: 4, wordLength: 6, timeInSeconds: 18 },
+    { name: 'Eve', guesses: 2, wordLength: 5, timeInSeconds: 10 },
+    { name: 'Alice', guesses: 3, wordLength: 5, timeInSeconds: 12 },
+    { name: 'Bob', guesses: 4, wordLength: 6, timeInSeconds: 18 },
+    { name: 'Eve', guesses: 2, wordLength: 5, timeInSeconds: 10 },
   ];
 
   res.render('scoreboard', { scores: dummyScores });
