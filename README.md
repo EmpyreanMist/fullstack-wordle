@@ -29,9 +29,7 @@ All backend-related code is inside the `/server` folder.
 | Method | Endpoint         | Description                             |
 | ------ | ---------------- | --------------------------------------- |
 | GET    | `/api/word`      | Returns a random word (query: `length`) |
-| GET    | `/api/info`      | Returns info about the game             |
 | GET    | `/api/highscore` | Returns a list of highscores            |
-| POST   | `/api/game`      | Receives the result from a game         |
 
 ---
 
